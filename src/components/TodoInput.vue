@@ -1,12 +1,13 @@
 <template>
   <div>
-    <label for="todo-input">오늘 할 일 : </label>
+    <label for="todo-input">오늘 할 일 1: </label>
     <input 
       id="todo-input" 
       type="text" 
-      :value="item" 
-      @input="handleInput"
-    >
+      @keydown="handleInput($event)"
+    />
+    <!-- @keydown(vue3) = @input(vue2) -->
+    <!-- handleInput($event)(vue3) = handleInput (vue2) -->
     <button @click="addTodo" type="button">추가</button>
   </div>
 </template>
@@ -20,9 +21,14 @@ export default defineComponent({
       required:true // 필수로 내려준다.
     }
   },
+  computed:{
+    inputData(){
+      return this.item
+    }
+  },
   methods: {
     handleInput(event:InputEvent){
-      console.log(event);
+      // console.log('여기',data);
       // this.$emit("input", event.target.value); 
       // 위 방법처럼 하면 target이 null일 때 error! 
       // this.$emit("input", event.target!.value);  = target이 항상 있다고 정리해줌.
@@ -30,7 +36,8 @@ export default defineComponent({
       //   return; // event.target이 없으면 return 하도록.
       // }
       const eventTarget = event.target as HTMLInputElement;
-      this.$emit("input", eventTarget.value);
+      console.log('이벤트',eventTarget)
+      this.$emit("input", {data:eventTarget});
       // 위에 event.target에 대해 정의해준 구문들과 같은 내용임. 
     },
     addTodo(){

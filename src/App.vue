@@ -7,9 +7,10 @@
     <!-- v-model로 todoText를 묶어도 됨. -->
       <TodoInput 
         :item="todoText" 
-        @input="updateTodoText" 
+        @input="updateTodoText($event.data)" 
         @add="addTodoItem"
       />
+    <!-- updateTodoText($event)(vue3) = updateTodoText (vue2) -->
     </main>
     <div>
       <ul>
@@ -43,7 +44,7 @@ const storage = {
 
 export interface Todo { // 객체를 위한 타입을 지정하는 영역
   title: string;
-  done: boolean;
+  done: any;
 }
 
 export default defineComponent({
@@ -56,13 +57,14 @@ export default defineComponent({
   },
   methods:{
     updateTodoText(value:string){ 
+      console.log('여기1',value)
       // 하위에서 emit받을 때 value의 타입이 htmlInputElement로 정해놨기 때문에 string으로 받음
-      this.todoText = value; 
+      this.todoText+=value; 
       //input에서 emit받은 값을 todoText로 들어감
     },
     addTodoItem(){
       const value = this.todoText;
-      const todo : Todo ={
+      const todo : Todo = {
         title:value,
         done: false
       }

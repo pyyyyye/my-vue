@@ -10,11 +10,11 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import {Todo} from '@/App.vue'
+
 export default defineComponent({
    props:{
-       todoItem : Object as PropType<Todo> || undefined,
+       todoItem : {type:Object as PropType<Todo>,default:{} as PropType<Todo>},
        index : Number
-       //!app.vue에서 만든 interface Todo를 불러올 떄 ctrl + space하면 된다는데 안됨.
    }, 
    computed:{
        todoItemClass() : string | null{ // computed를 쓸 땐 속성에 대한 타입과 반환타입을 꼭 적어줘야 함. 
