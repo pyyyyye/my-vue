@@ -8,6 +8,7 @@
     />
     <!-- @keydown(vue3) = @input(vue2) -->
     <!-- handleInput($event)(vue3) = handleInput (vue2) -->
+    <!-- vue3와 vue2의 차이가 너무 많다 -->
     <button @click="addTodo" type="button">추가</button>
   </div>
 </template>
