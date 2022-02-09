@@ -1,15 +1,8 @@
-<template>
-  <App/>
-</template>
+<template>메인 홈 화면</template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import App from '../App.vue'
+// import App from "../App.vue";
 
-export default defineComponent({
-  name: "Home",
-  components: {
-    App,
-  },
-});
+export default defineComponent({});
 </script>

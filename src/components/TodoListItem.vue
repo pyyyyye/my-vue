@@ -1,43 +1,45 @@
 <template>
-    <li>
-        <span class="item" :class="todoItemClass" @click="toggleItem">{{ todoItem.title }}</span>
-        <!-- <button @click="$emit('delete')">삭제</button> -->
-        <!-- 위처럼 emit을 보내도 되지만, 이렇게 되면 상위 파일에서도 수정해야 하는 부분이 생기니까 가급적 안에서 만들 것. -->
-        <button @click="removeItem">삭제</button>
-    </li>
+  <li>
+    <span class="item" :class="todoItemClass" @click="toggleItem">{{
+      todoItem.title
+    }}</span>
+    <!-- <button @click="$emit('delete')">삭제</button> -->
+    <!-- 위처럼 emit을 보내도 되지만, 이렇게 되면 상위 파일에서도 수정해야 하는 부분이 생기니까 가급적 안에서 만들 것. -->
+    <button @click="removeItem">삭제</button>
+  </li>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
-import {Todo} from '@/App.vue'
+import { defineComponent, PropType } from "vue";
+import { Todo } from "@/components/HomeMain.vue";
 
 export default defineComponent({
-   props:{
-       todoItem : {type:Object as PropType<Todo>,default:{} as PropType<Todo>},
-       index : Number
-   }, 
-   computed:{
-       todoItemClass() : string | null{ // computed를 쓸 땐 속성에 대한 타입과 반환타입을 꼭 적어줘야 함. 
-           return this.todoItem.done ? 'complete' : null
-       }
-   },
-   methods:{
-       toggleItem(){
-           this.$emit("toggle", this.todoItem, this.index);
-       },
-       removeItem(){
-           this.$emit("remove", this.index);
-       },
-   }
-})
+  props: {
+    todoItem: { type: Object as PropType<Todo>, default: {} as PropType<Todo> },
+    index: Number,
+  },
+  computed: {
+    todoItemClass(): string | null {
+      // computed를 쓸 땐 속성에 대한 타입과 반환타입을 꼭 적어줘야 함.
+      return this.todoItem.done ? "complete" : null;
+    },
+  },
+  methods: {
+    toggleItem() {
+      this.$emit("toggle", this.todoItem, this.index);
+    },
+    removeItem() {
+      this.$emit("remove", this.index);
+    },
+  },
+});
 </script>
 
-
 <style scoped>
-.item{
-    cursor: pointer;
+.item {
+  cursor: pointer;
 }
-.complete{
-    text-decoration: line-through;
+.complete {
+  text-decoration: line-through;
 }
 </style>
