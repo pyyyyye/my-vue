@@ -26,7 +26,7 @@ export default defineComponent({
   //           console.log(res);
   //           //   this.isItemList =  ""
   //         });
-  //     },ㅠ
+  //     },
   //   },
   setup() {
     const getItemListPlz = (itemKey: string, user_code: string) => {
