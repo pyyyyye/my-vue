@@ -1,5 +1,6 @@
 <template>
   <h1>test5- put</h1>
+  <!-- <input type="text" v-model="items.it_name" /> 안뜸. -->
   <input type="text" v-model="putItemContents" />
   <button @click="putItems('ws_05000', 'w2021')">putItems 품목수정</button>
 </template>
@@ -72,6 +73,7 @@ export default defineComponent({
         )
         .then((res) => {
           console.log("putItems : ", res);
+          console.log("input : ", this.putItemContents);
           this.putItemContents = "";
         });
     },
