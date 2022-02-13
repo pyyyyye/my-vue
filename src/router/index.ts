@@ -4,6 +4,7 @@ import Test from "../views/Test.vue";
 import Test2 from "../views/Test2.vue";
 import Test3 from "../views/Test3.vue";
 import Test4 from "../views/Test4.vue";
+import Test5 from "../views/Test5_put.vue";
 import Homework_TodoList from "../views/Homework_TodoList.vue";
 
 const routes: Array<RouteRecordRaw> = [
@@ -31,6 +32,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/test4",
     name: "Test4",
     component: Test4,
+  },
+  {
+    path: "/test5",
+    name: "Test5",
+    component: Test5,
   },
   {
     path: "/Homework_TodoList",
