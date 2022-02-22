@@ -29,10 +29,9 @@ export default defineComponent({
       };
       axios
         .get(`https://tapi.wssw.kr/items`, {
-          params: {
+          params:
             //   user_code,
             getItemsParams,
-          },
         })
         .then((res) => {
           console.log("getItemData : ", res);
