@@ -19,7 +19,7 @@ import axios from "axios";
 export default defineComponent({
   data() {
     return {
-      itNameInput: "",
+      itNameInput: "" as string,
     };
   },
   // methods: {
